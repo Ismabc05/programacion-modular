@@ -41,6 +41,6 @@ export class BrandsController {
 
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
-    return this.brandsService.remove(+id);
+    return this.brandsService.remove(id);
   }
 }

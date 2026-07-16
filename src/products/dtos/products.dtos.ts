@@ -18,7 +18,7 @@ export class CreateProductDto {
 
   @IsNumber()
   @IsNotEmpty()
-  @IsPositive()
+  @IsPositive() // valida que el precio sea mayor que 0
   readonly price: number;
 
   @IsNumber()
