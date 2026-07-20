@@ -8,7 +8,7 @@ const API_KEY_PROD = 'PROD734575';
   providers: [
     {
       provide: 'API_KEY',
-      useValue: process.env.NODE_ENV === 'prod' ? API_KEY_PROD : API_KEY,
+      useValue: process.env.NODE_ENV === 'prod' ? API_KEY_PROD : API_KEY, // el provider useValue
     },
   ],
   exports: ['API_KEY'],

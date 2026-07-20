@@ -9,16 +9,19 @@ import { DatabaseModule } from './database/database.module';
   imports: [HttpModule, UsersModule, ProductsModule, DatabaseModule],
   controllers: [AppController],
   providers: [
-    AppService,
+    // Los providers son servicios que tiene un módulo
+    AppService, // en realidad es el provider useClass
     {
       provide: 'TASKS',
       useFactory: async (http: HttpService) => {
+        // El provider useFactory
         const tasks = await http
           .get('https://jsonplaceholder.typicode.com/todos')
           .toPromise();
         return tasks.data;
       },
       inject: [HttpService],
+      // Este useFactory solo se puede hacer dentro de este modulo
     },
   ],
 })
