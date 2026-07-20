@@ -6,6 +6,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 
+import { enviroments } from './enviroments';
+
 @Module({
   imports: [
     HttpModule,
@@ -13,7 +15,7 @@ import { DatabaseModule } from './database/database.module';
     ProductsModule,
     DatabaseModule,
     ConfigModule.forRoot({
-      envFilePath: '.env', // Le decimos que lea el archivo .env
+      envFilePath: enviroments[process.env.NODE_ENV] || '.env', // Dependiendo del entorno (NODE_ENV), carga un archivo .env diferente, en caso de que no pueda devolver ninguno le enviamos el .env
       isGlobal: true,
     }),
   ],
