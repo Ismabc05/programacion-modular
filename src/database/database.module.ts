@@ -8,7 +8,7 @@ const API_KEY_PROD = 'PROD734575';
   providers: [
     {
       provide: 'API_KEY',
-      useValue: process.env.NODE_ENV === 'prod' ? API_KEY_PROD : API_KEY, // el provider useValue
+      useValue: process.env.NODE_ENV === 'prod' ? API_KEY_PROD : API_KEY, // el provider useValue se usa para traer valores de entorno, no es muy aconsejable ya que podemos tener muchos valores, para ellos se usa el ConfigModule
     },
   ],
   exports: ['API_KEY'],

@@ -1,4 +1,5 @@
 import { Module, HttpModule, HttpService } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { AppController } from './app.controller';
@@ -6,7 +7,16 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [HttpModule, UsersModule, ProductsModule, DatabaseModule],
+  imports: [
+    HttpModule,
+    UsersModule,
+    ProductsModule,
+    DatabaseModule,
+    ConfigModule.forRoot({
+      envFilePath: '.env', // Le decimos que lea el archivo .env
+      isGlobal: true,
+    }),
+  ],
   controllers: [AppController],
   providers: [
     // Los providers son servicios que tiene un módulo
