@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 
 import { enviroments } from './enviroments';
+import config from './config';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { enviroments } from './enviroments';
     DatabaseModule,
     ConfigModule.forRoot({
       envFilePath: enviroments[process.env.NODE_ENV] || '.env', // Dependiendo del entorno (NODE_ENV), carga un archivo .env diferente, en caso de que no pueda devolver ninguno le enviamos el .env
+      load: [config],
       isGlobal: true,
     }),
   ],
