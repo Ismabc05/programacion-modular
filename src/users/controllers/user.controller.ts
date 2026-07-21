@@ -8,15 +8,18 @@ import {
   Delete,
   ParseIntPipe,
 } from '@nestjs/common';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 import { UsersService } from '../services/users.services';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get()
+  @ApiOperation({ summary: 'List of users' })
   findAll() {
     return this.usersService.findAll();
   }
